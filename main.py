@@ -1,3 +1,4 @@
+import time
 import rpyc
 
 class MyService(rpyc.Service):
@@ -14,9 +15,21 @@ class MyService(rpyc.Service):
     
     def get_question(self): # este método não é exposto
         return "Qual é a cor do cavalo branco de Napoleão?"
+
+    def exposed_soma_lista(self, list):
+        start = time.time()
+
+        sigma = sum(list)
+
+        end = time.time()
+        print(end-start)
+        
+        return sigma 
+        
     
 #Para iniciar o servidor
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
     t = ThreadedServer(MyService, port=18861)
     t.start()
+    
