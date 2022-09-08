@@ -10,6 +10,7 @@ if len(sys.argv) < 2:
 
 server = sys.argv[1]
 c = rpyc.connect(server,18861)
+c._config['sync_request_timeout'] = None
 
 n = int(sys.argv[2])
 list = []
