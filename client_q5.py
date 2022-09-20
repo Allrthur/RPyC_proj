@@ -21,3 +21,5 @@ print(c.root.soma_lista(list))
 
 end = time.time()
 print(end-start)
+
+print(sys.getsizeof(list))
